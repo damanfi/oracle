@@ -1,0 +1,20 @@
+[package]
+name = "daman-oracle"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "On-platform indexer for Daman: reads SettlementCompleted and TradeExecuted from the deployment's own contracts. Per ADR-001."
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+hex = "0.4"
+
+[[bin]]
+name = "daman-oracle"
+path = "src/main.rs"
